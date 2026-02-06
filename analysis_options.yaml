@@ -1,0 +1,69 @@
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+
+include: package:flutter_lints/flutter.yaml
+
+# ----------------------------------------------------------
+# 1. ANALYZER CONFIGURATION (The Compiler's Brain)
+# ----------------------------------------------------------
+analyzer:
+  # This makes Dart strict. It will scream if you are lazy with types.
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+  # Ignore files that you didn't write (generated code)
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+  # Customize how errors are shown
+  errors:
+    # Treat 'missing_return' as a fatal error (code won't compile)
+    missing_return: error
+    # Treat 'dead_code' as info so it doesn't look like a crash
+    dead_code: info
+    # Treat 'todo' comments as info
+    todo: info
+
+# ----------------------------------------------------------
+# 2. LINTER RULES (The Style Police)
+# ----------------------------------------------------------
+linter:
+  rules:
+    # --- CONSTANT ENFORCEMENT (Optimization) ---
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_declarations: true
+    unnecessary_const: true
+
+    # --- STYLE & FORMATTING ---
+    # Prefer 'string' over "string"
+    prefer_single_quotes: true
+    # Sort imports alphabetically (dart -> package -> relative)
+    directives_ordering: true
+    # Enforce using curly braces in if/else/loops
+    curly_braces_in_flow_control_structures: true
+    # Force comma at the end of parameter lists (helps auto-formatting)
+    require_trailing_commas: true
+
+    # --- ERROR PREVENTION ---
+    # Don't use print() in production (use debugPrint)
+    avoid_print: true
+    # Avoid 'var' when type isn't obvious
+    always_specify_types: false # Kept false to allow type inference (standard modern Dart)
+    # Require types on function returns
+    always_declare_return_types: true
+    # Don't catch generic 'Error', catch 'Exception' instead
+    avoid_catching_errors: true
+    # Warn if you assign a value to a parameter inside a function
+    parameter_assignments: true
+
+    # --- FLUTTER BEST PRACTICES ---
+    # Put child/children properties at the end of the widget constructor
+    sort_child_properties_last: true
+    # Use SizedBox instead of Container when you only need size
+    sized_box_for_whitespace: true
+    # Warn if you forget to call super.dispose() or super.initState()
+    cancel_subscriptions: true
