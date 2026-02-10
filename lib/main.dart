@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:playground/gradient_container.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text(
-            'Bem-Vindo',
-            style: GoogleFonts.jetBrainsMono(
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+        body: GradientContainer(
+          Color.fromARGB(255, 73, 23, 120),
+          Color.fromARGB(255, 86, 116, 193),
         ),
       ),
     ),
